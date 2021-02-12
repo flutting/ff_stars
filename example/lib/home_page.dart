@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ff_stars/ff_stars.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,20 +7,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("demo列表"),
       ),
-      body: Center(child: Text("home"),)
+      body: Center(
+        child: FFStars(),
+      ),
     );
   }
-
-  /// 跳转到指定的demo页面
-  void showDemoPage(int index) {
-
-  }
-
 }
