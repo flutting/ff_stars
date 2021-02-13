@@ -19,7 +19,22 @@ class FFStars extends StatefulWidget {
     this.justShow = false,
     this.starsChanged,
   })  : assert(normalStar != null),
-        assert(selectedStar != null);
+        assert(selectedStar != null) {
+    /// 限制0.01 <= step <= 1.0
+    this.step = min(1.0, this.step);
+
+    this.step = max(0.01, this.step);
+
+    /// 限制最低星不高于最高星
+    this.miniStars = min(this.miniStars, this.starCount * 1.0);
+
+    /// 限制当前星不高于最高星
+    this.currenStars = min(this.currenStars, this.starCount * 1.0);
+
+    /// 限制当前星不低于最低星
+    this.currenStars = max(this.currenStars, this.miniStars);
+
+  }
 
   /// 选中的星星
   Widget normalStar;
@@ -65,11 +80,8 @@ class _FFStarsState extends State<FFStars> {
     this.setupRealStars(widget.currenStars, false, false);
   }
 
-  double _width = 0;
-
   @override
   Widget build(BuildContext context) {
-    // print("最外层的build方法被执行了!");
     return Stack(
       children: [
         GestureDetector(
@@ -92,7 +104,7 @@ class _FFStarsState extends State<FFStars> {
         ),
         IgnorePointer(
           child: ClipRect(
-            clipper: FFStarsClipper(this._width),
+            clipper: FFStarsClipper(this.getRealWidth()),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: getStars(widget.starCount, true),
@@ -134,20 +146,22 @@ class _FFStarsState extends State<FFStars> {
       double remainder = (decimalNumber % widget.step);
       realStars = i + floor * widget.step + ((remainder > widget.step * 0.5) ? widget.step : 0);
     }
-    realStars = (realStars * 100).floor() / 100;
+    widget.currenStars = (realStars * 100).floor() / 100;
 
-    /// 3.计算实际要显示的宽度(星星)
-    var width = (widget.starWidth + widget.starMargin) * i + (realStars - i) * widget.starWidth;
-    this._width = width;
-
-    /// 4.更新星星展示效果并回调
+    /// 3.更新星星展示效果并回调
     if (reload == true) {
       setState(() {});
       if (widget.starsChanged == null) {
         return;
       }
-      widget.starsChanged(realStars, choosedStars);
+      widget.starsChanged(widget.currenStars, choosedStars);
     }
+  }
+
+  double getRealWidth() {
+    var i = widget.currenStars.floor();
+    var width = (widget.starWidth + widget.starMargin) * i + (widget.currenStars - i) * widget.starWidth;
+    return width;
   }
 
   /// 获取要显示的所有星星
@@ -155,7 +169,6 @@ class _FFStarsState extends State<FFStars> {
     return List.generate(max(count * 2 - 1, 0), (index) {
       if (index % 2 == 0) {
         return Container(
-          // color: selected ? Colors.red : Colors.black12.withOpacity(0.1),
           width: widget.starWidth,
           height: widget.starHeight,
           child: selected ? widget.selectedStar : widget.normalStar,
@@ -163,7 +176,7 @@ class _FFStarsState extends State<FFStars> {
       }
 
       return Container(
-        width: 10,
+        width: widget.starMargin,
         height: widget.starHeight,
         color: Colors.transparent,
       );
