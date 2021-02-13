@@ -11,10 +11,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("demo列表"),
+        title: Text("星星评价"),
       ),
       body: Center(
-        child: FFStars(),
+        child: FFStars(
+          normalStar: Image.asset("assets/normal.png"),
+          selectedStar: Image.asset("assets/selected.png"),
+          //justShow: true,
+          // starsChanged: (realStars, choosedStars){
+          //   print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+          // },
+        ),
       ),
     );
   }
