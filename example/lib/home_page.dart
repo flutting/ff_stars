@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             /// 第一个
             Text("1. 共计5颗星, 只能选整星, 默认给3颗"),
             SizedBox(
@@ -68,6 +69,10 @@ class _HomePageState extends State<HomePage> {
               },
               step: 0.01,
               currenStars: 4.3,
+              // starCount: 5,
+              // starHeight: 40,
+              // starWidth: 40,
+              // starMargin: 20,
               //justShow: true,
             ),
 

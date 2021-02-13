@@ -33,7 +33,6 @@ class FFStars extends StatefulWidget {
 
     /// 限制当前星不低于最低星
     this.currenStars = max(this.currenStars, this.miniStars);
-
   }
 
   /// 选中的星星
@@ -84,18 +83,18 @@ class _FFStarsState extends State<FFStars> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        GestureDetector(
-          onTapDown: (details) {
+        Listener(
+          onPointerDown: (event) {
             if (widget.justShow) {
               return;
             }
-            this.calculateChoosedStars(details.localPosition.dx);
+            this.calculateChoosedStars(event.localPosition.dx);
           },
-          onPanUpdate: (details) {
+          onPointerMove: (event){
             if (widget.justShow) {
               return;
             }
-            this.calculateChoosedStars(details.localPosition.dx);
+            this.calculateChoosedStars(event.localPosition.dx);
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
