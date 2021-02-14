@@ -12,7 +12,7 @@
 ```
 // 集成
 dependencies:
-  ff_stars: ^0.0.1
+  ff_stars: ^0.0.2
 
 // 引入
 import 'package:ff_stars/ff_stars.dart';
