@@ -1,8 +1,9 @@
 name: ff_stars
-description: A new Flutter package.
+description: flutter的星星评价组件.
 version: 0.0.1
-author:
-homepage:
+# author: Lucian-1156868877@qq.com #弃用了, 不能写
+homepage: https://github.com/flutting/ff_stars
+repository: https://github.com/flutting/ff_stars
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

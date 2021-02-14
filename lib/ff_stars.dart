@@ -18,6 +18,7 @@ class FFStars extends StatefulWidget {
     this.miniStars = 0.0,
     this.justShow = false,
     this.starsChanged,
+    this.needFllowStar = false,
   })  : assert(normalStar != null),
         assert(selectedStar != null) {
     /// 限制0.01 <= step <= 1.0
@@ -65,7 +66,11 @@ class FFStars extends StatefulWidget {
   /// 仅做展示,  如果是true则用户不可修改星星内容
   bool justShow;
 
+  /// 数值发生变化的回调
   FFStarsChanged starsChanged;
+
+  /// 是否需要实时回调, 若开启, 拖动时会回调多次, 否则仅在用户操作结束后回调.
+  bool needFllowStar;
 
   @override
   _FFStarsState createState() => _FFStarsState();
@@ -76,7 +81,7 @@ class _FFStarsState extends State<FFStars> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.setupRealStars(widget.currenStars, false, false);
+    this.setupRealStars(widget.currenStars, false, false, false);
   }
 
   @override
@@ -88,13 +93,19 @@ class _FFStarsState extends State<FFStars> {
             if (widget.justShow) {
               return;
             }
-            this.calculateChoosedStars(event.localPosition.dx);
+            this.calculateChoosedStars(event.localPosition.dx, false);
           },
           onPointerMove: (event){
             if (widget.justShow) {
               return;
             }
-            this.calculateChoosedStars(event.localPosition.dx);
+            this.calculateChoosedStars(event.localPosition.dx, false);
+          },
+          onPointerUp: (event){
+            if (widget.justShow) {
+              return;
+            }
+            this.calculateChoosedStars(event.localPosition.dx, true);
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -115,7 +126,7 @@ class _FFStarsState extends State<FFStars> {
   }
 
   /// 计算实际选择了多少分
-  void calculateChoosedStars(double width) {
+  void calculateChoosedStars(double width, bool needCallback) {
     /// 1.找到属于哪一颗星星
     var starIndex = (width / (widget.starWidth + widget.starMargin)).floor();
 
@@ -128,11 +139,11 @@ class _FFStarsState extends State<FFStars> {
     /// print("实际选择的分值为: " + choosedStars.toString());
 
     /// 4.计算实际得分
-    this.setupRealStars(choosedStars, true, true);
+    this.setupRealStars(choosedStars, true, true, needCallback);
   }
 
   /// 设置最终的实际得分
-  void setupRealStars(double choosedStars, bool useStep, bool reload) {
+  void setupRealStars(double choosedStars, bool useStep, bool reload, bool needCallback) {
     /// 1.最高分为星星个数, 最低分为自定义最低分(默认0);
     var realStars = min(widget.starCount, choosedStars);
     realStars = max(widget.miniStars, realStars);
@@ -150,6 +161,11 @@ class _FFStarsState extends State<FFStars> {
     /// 3.更新星星展示效果并回调
     if (reload == true) {
       setState(() {});
+
+      if (needCallback == false && widget.needFllowStar == false) {
+        return;
+      }
+
       if (widget.starsChanged == null) {
         return;
       }
