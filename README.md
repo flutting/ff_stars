@@ -8,16 +8,14 @@
 ## 效果截图
 <img src="https://github.com/flutting/ZZResources/blob/master/ZZResources/flutter/flutter_stars.png" width="300" height="520">
 
-### 普通引用
-下载demo, 将ff_stars.dart引入到项目中即可使用.
+### pub
 ```
-import 'package:你存放的路径/ff_stars.dart';
-```
-
-### pub集成(正在开通)
-```
+// 集成
 dependencies:
   ff_stars: ^0.0.1
+
+// 引入
+import 'package:ff_stars/ff_stars.dart';
 ```
 
 ## 使用方法
@@ -34,7 +32,7 @@ FFStars(
   // starHeight: 40,/// 星星的高度, 默认30
   // starWidth: 40,/// 星星的宽度,默认30
   // starMargin: 20,/// 星星间的间距, 默认10
-  //justShow: true,/// 是否仅做展示, 默认false
+  // justShow: true,/// 是否仅做展示, 默认false
 ),
 ```
 
