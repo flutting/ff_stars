@@ -16,11 +16,11 @@ import 'package:你存放的路径/ff_stars.dart';
 
 ### pub集成(正在开通)
 ```
-import 'package:ff_stars/ff_stars.dart';
+dependencies:
+  ff_stars: ^0.0.1
 ```
 
 ## 使用方法
-
 ```
 FFStars(
   normalStar: Image.asset("assets/你的未选中图.png"),
@@ -36,4 +36,9 @@ FFStars(
   // starMargin: 20,/// 星星间的间距, 默认10
   //justShow: true,/// 是否仅做展示, 默认false
 ),
+```
+
+## 主页-GitHub
+```
+https://github.com/flutting/ff_stars
 ```

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ff_stars/ff_stars.dart';
 
-//连接逍遥模拟器: adb connect 127.0.0.1:21503
-
 void main() {
   runApp(MyApp());
   /// 安卓状态栏优化
@@ -167,3 +165,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+//连接逍遥模拟器: adb connect 127.0.0.1:21503
+//检查flutter packages pub publish --dry-run
+//发布命令flutter packages pub publish --server=https://pub.dartlang.org
+//报错code65解决: flutter packages pub global activate devtools
