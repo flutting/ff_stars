@@ -8,7 +8,8 @@
 
 ## 效果展示
 1. 部分网络环境可能无法查看效果图.
-2. git图片加载较慢, 可直接下载demo运行.
+2. git图片加载较慢, 可下载demo直接运行.
+3. 如遇到Could not build the application for the simulator.请先使用flutter clean清空缓存.
 <img src="https://github.com/flutting/ff_source/blob/main/ff_stars/ff_stars.gif" width="343" height="617">
 
 ### pub
