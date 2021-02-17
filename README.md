@@ -15,7 +15,7 @@
 ```
 // 集成
 dependencies:
-  ff_stars: ^0.0.3
+  ff_stars: ^0.0.5
 
 // 引入
 import 'package:ff_stars/ff_stars.dart';
@@ -36,6 +36,7 @@ FFStars(
   // starWidth: 40,/// 星星的宽度,默认30
   // starMargin: 20,/// 星星间的间距, 默认10
   // justShow: true,/// 是否仅做展示, 默认false
+  // rounded: true,/// 四舍五入-取最近值, 默认false(进一法)
 ),
 ```
 

@@ -1,6 +1,6 @@
 name: ff_stars
 description: 星星评价组件--支持整星, 半星 任意星. 支持点击&拖动调整, 可设置最低分. 支持自定义星星图片, 大小, 间距, 数量.
-version: 0.0.3
+version:
 # author: Lucian-1156868877@qq.com #弃用了, 不能写
 homepage: https://github.com/flutting/ff_stars
 repository: https://github.com/flutting/ff_stars
