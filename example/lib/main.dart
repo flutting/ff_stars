@@ -175,8 +175,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   double afw(x) {
-    var UIWidth = MediaQuery.of(context).size.width;
-    return x / 375.0 * UIWidth;
+    var screenWidth = MediaQuery.of(context).size.width;
+    return x / 375.0 * screenWidth;
   }
 
 }
