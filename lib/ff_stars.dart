@@ -12,6 +12,7 @@ class FFStars extends StatefulWidget {
     this.starCount = 5,
     this.currenStars = 0.0,
     this.step = 0.01,
+    this.rounded = false,
     this.starWidth = 30.0,
     this.starHeight = 30.0,
     this.starMargin = 10.0,
@@ -50,6 +51,11 @@ class FFStars extends StatefulWidget {
 
   /// 分阶, 范围0.0-1.0, 0.0表示任意星, 1.0表示整星星, 0.5表示半星, 范围内自定义.
   double step;
+
+  /// 四舍五入
+  /// 默认false: 举例: step=1, 实际选择2.4则结果为: 3. step=0.5, 实际选择2.2则结果为2.5.("进一法")
+  /// 为true时:  举例: step=1, 实际选择2.4则结果为: 2. step=0.5, 实际选择2.2则结果为2.0.("四舍五入-取最近值")
+  bool rounded;
 
   /// 星星的宽度
   double starWidth;
@@ -153,8 +159,13 @@ class _FFStarsState extends State<FFStars> {
     if (useStep == true) {
       var decimalNumber = (realStars - i);
       int floor = (decimalNumber / widget.step).floor();
-      double remainder = (decimalNumber % widget.step);
-      realStars = i + floor * widget.step + ((remainder > widget.step * 0.5) ? widget.step : 0);
+      double remainder = decimalNumber % widget.step;
+
+      if (widget.rounded == true) {/// 取最近值
+        realStars = i + floor * widget.step + ((remainder > widget.step * 0.5) ? widget.step : 0);
+      } else {/// 进一法
+        realStars = i + floor * widget.step + ((remainder > 0.0) ? widget.step : 0);
+      }
     }
     widget.currenStars = (realStars * 100).floor() / 100;
 

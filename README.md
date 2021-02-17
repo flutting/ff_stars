@@ -4,15 +4,18 @@
 1. 支持整星, 半星 任意星.
 2. 支持点击&拖动调整, 可设置最低分.
 3. 支持自定义星星图片, 大小, 间距, 数量.
+4. 支持设置选择"进一法(默认)"或"四舍五入(取最近值)"取最终值.
 
-## 效果截图
-<img src="https://github.com/flutting/ZZResources/blob/master/ZZResources/flutter/flutter_stars.png" width="300" height="520">
+## 效果展示
+1. 部分网络环境可能无法查看效果图.
+2. git图片加载较慢, 可直接下载demo运行.
+<img src="https://github.com/flutting/ff_source/blob/main/ff_stars/ff_stars.gif" width="343" height="617">
 
 ### pub
 ```
 // 集成
 dependencies:
-  ff_stars: ^0.0.2
+  ff_stars: ^0.0.3
 
 // 引入
 import 'package:ff_stars/ff_stars.dart';
@@ -21,8 +24,8 @@ import 'package:ff_stars/ff_stars.dart';
 ## 使用方法
 ```
 FFStars(
-  normalStar: Image.asset("assets/你的未选中图.png"),
-  selectedStar: Image.asset("assets/你的选中图.png"),
+  normalStar: Image.asset("assets/未选中.png"),
+  selectedStar: Image.asset("assets/选中.png"),
   starsChanged: (realStars, choosedStars) {
     print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
   },

@@ -38,8 +38,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +119,7 @@ class _HomePageState extends State<HomePage> {
       SizedBox(
         height: afw(20),
       ),
-      Text("4. 共计8颗星, 只能选整星, 默认给6颗, 最低选2颗"),
+      Text("4. 共计8颗星, 最低选2颗"),
       SizedBox(
         height: afw(5),
       ),
@@ -141,7 +139,7 @@ class _HomePageState extends State<HomePage> {
       SizedBox(
         height: afw(20),
       ),
-      Text("5. 共计5颗星, 仅做展示, 不可修改"),
+      Text("5. 共计5颗星, 不可修改"),
       SizedBox(
         height: afw(5),
       ),
@@ -156,7 +154,7 @@ class _HomePageState extends State<HomePage> {
       SizedBox(
         height: afw(20),
       ),
-      Text("6. 共计8颗星, 变化实时回调(其余为结束回调)"),
+      Text("6. 四舍五入, 变化实时回调(其余为结束回调)"),
       SizedBox(
         height: afw(5),
       ),
@@ -168,6 +166,8 @@ class _HomePageState extends State<HomePage> {
         },
         currenStars: 7,
         starCount: 8,
+        step: 1,
+        rounded: true,/// 四舍五入-取最近值
         needFllowStar: true,
       ),
     ];
