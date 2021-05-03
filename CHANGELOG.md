@@ -1,3 +1,4 @@
-## [0.1.2] - TODO: Add release date.
+## [0.1.5] - TODO: Add release date.
 
-* TODO: 解决警告, 修正注释, 优化demo效果.
+* TODO: Resolve warnings, fix comments and spelling errors, and optimize demo effects.
+* TODO: 解决警告, 修正注释以及拼写错误, 优化demo效果.

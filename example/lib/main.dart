@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 1.0,
-        currenStars: 3,
+        currentStars: 3,
       ),
 
       /// 第二个
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 0.5,
-        currenStars: 3.5,
+        currentStars: 3.5,
       ),
 
       /// 第三个
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 0.01,
-        currenStars: 4.3,
+        currentStars: 4.3,
         // starCount: 5,
         // starHeight: 40,
         // starWidth: 40,
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 1.0,
-        currenStars: 6,
+        currentStars: 6,
         starCount: 8,
         miniStars: 2,
       ),
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
       FFStars(
         normalStar: Image.asset("assets/orangeNormal.png"),
         selectedStar: Image.asset("assets/orangeSelected.png"),
-        currenStars: 4.7,
+        currentStars: 4.7,
         justShow: true,
       ),
 
@@ -164,11 +164,11 @@ class _HomePageState extends State<HomePage> {
         starsChanged: (realStars, choosedStars) {
           print("实际选择: $choosedStars, 最终得分: $realStars");
         },
-        currenStars: 7,
+        currentStars: 7,
         starCount: 8,
         step: 1,
         rounded: true,/// 四舍五入-取最近值
-        needFllowStar: true,
+        needFollowStar: true,
       ),
     ];
 
