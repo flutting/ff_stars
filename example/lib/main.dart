@@ -44,9 +44,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("星星评价"),
       ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(afw(40), afw(60), 0, 0),
+      body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: demoList(),
@@ -65,10 +65,10 @@ class _HomePageState extends State<HomePage> {
         height: afw(5),
       ),
       FFStars(
-        normalStar: Image.asset("assets/未选中蓝星.png"),
-        selectedStar: Image.asset("assets/选中蓝星.png"),
+        normalStar: Image.asset("assets/blueNormal.png"),
+        selectedStar: Image.asset("assets/blueSelected.png"),
         starsChanged: (realStars, choosedStars) {
-          print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+          print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 1.0,
         currenStars: 3,
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
         normalStar: Image.asset("assets/orangeNormal.png"),
         selectedStar: Image.asset("assets/orangeSelected.png"),
         starsChanged: (realStars, choosedStars) {
-          print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+          print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 0.5,
         currenStars: 3.5,
@@ -101,10 +101,10 @@ class _HomePageState extends State<HomePage> {
         height: afw(5),
       ),
       FFStars(
-        normalStar: Image.asset("assets/未选中圣诞节.png"),
-        selectedStar: Image.asset("assets/选中圣诞节.png"),
+        normalStar: Image.asset("assets/christmasNormal.png"),
+        selectedStar: Image.asset("assets/christmasSelected.png"),
         starsChanged: (realStars, choosedStars) {
-          print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+          print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 0.01,
         currenStars: 4.3,
@@ -124,10 +124,10 @@ class _HomePageState extends State<HomePage> {
         height: afw(5),
       ),
       FFStars(
-        normalStar: Image.asset("assets/未选中蓝星.png"),
-        selectedStar: Image.asset("assets/选中蓝星.png"),
+        normalStar: Image.asset("assets/blueNormal.png"),
+        selectedStar: Image.asset("assets/blueSelected.png"),
         starsChanged: (realStars, choosedStars) {
-          print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+          print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         step: 1.0,
         currenStars: 6,
@@ -159,10 +159,10 @@ class _HomePageState extends State<HomePage> {
         height: afw(5),
       ),
       FFStars(
-        normalStar: Image.asset("assets/未选中圣诞节.png"),
-        selectedStar: Image.asset("assets/选中圣诞节.png"),
+        normalStar: Image.asset("assets/christmasNormal.png"),
+        selectedStar: Image.asset("assets/christmasSelected.png"),
         starsChanged: (realStars, choosedStars) {
-          print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+          print("实际选择: $choosedStars, 最终得分: $realStars");
         },
         currenStars: 7,
         starCount: 8,

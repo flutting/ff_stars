@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 typedef FFStarsChanged = void Function(double realStars, double choosedStars);
 
+// ignore: must_be_immutable
 class FFStars extends StatefulWidget {
   FFStars({
     @required this.normalStar,
@@ -20,7 +21,7 @@ class FFStars extends StatefulWidget {
     this.justShow = false,
     this.starsChanged,
     this.needFllowStar = false,
-  })  : assert(normalStar != null),
+  }) : assert(normalStar != null),
         assert(selectedStar != null) {
     /// 限制0.01 <= step <= 1.0
     this.step = min(1.0, this.step);
@@ -37,14 +38,14 @@ class FFStars extends StatefulWidget {
     this.currenStars = max(this.currenStars, this.miniStars);
   }
 
-  /// 选中的星星
-  Widget normalStar;
+  /// 未选中的星星
+  final Widget normalStar;
 
   /// 选中(高亮)的星星
-  Widget selectedStar;
+  final Widget selectedStar;
 
   /// 星星数量
-  int starCount;
+  final int starCount;
 
   /// 当前/需要显示的星星数量(支持小数)
   double currenStars;
@@ -58,13 +59,13 @@ class FFStars extends StatefulWidget {
   bool rounded;
 
   /// 星星的宽度
-  double starWidth;
+  final double starWidth;
 
   /// 星星的高度
-  double starHeight;
+  final double starHeight;
 
   /// 两个星星中间的间距
-  double starMargin;
+  final double starMargin;
 
   /// 最低分, 字面意思
   double miniStars;
