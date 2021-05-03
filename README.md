@@ -16,7 +16,7 @@
 ```
 // 集成
 dependencies:
-  ff_stars: ^0.1.5
+  ff_stars: ^0.1.6
 
 // 引入
 import 'package:ff_stars/ff_stars.dart';
@@ -25,19 +25,20 @@ import 'package:ff_stars/ff_stars.dart';
 ## 使用方法
 ```
 FFStars(
-  normalStar: Image.asset("assets/未选中.png"),
-  selectedStar: Image.asset("assets/选中.png"),
+  normalStar: Image.asset("assets/normalImage.png"),
+  selectedStar: Image.asset("assets/selectedImage.png"),
   starsChanged: (realStars, choosedStars) {
-    print("实际选择: ${choosedStars}, 最终得分: ${realStars}");
+    print("实际选择: $choosedStars, 最终得分: $realStars");
   },
   step: 0.01,/// 用于设置半星(0.5), 整星(1.0), 任意星(0.01), 可在0.01 - 1.0之间自定义, 默认值为0.01
-  currenStars: 4.3,/// 默认有几颗星星, 默认值为0
+  currentStars: 4.3,/// 默认有几颗星星, 默认值为0
   // starCount: 5,/// 一共有几颗星, 默认值5
   // starHeight: 40,/// 星星的高度, 默认30
   // starWidth: 40,/// 星星的宽度,默认30
   // starMargin: 20,/// 星星间的间距, 默认10
   // justShow: true,/// 是否仅做展示, 默认false
   // rounded: true,/// 四舍五入-取最近值, 默认false(进一法)
+  // needFollowStar: true,/// 变化实时回调(变更后立即返回当前结果), 默认flase(松手后返回最终结果)
 ),
 ```
 

@@ -182,6 +182,6 @@ class _HomePageState extends State<HomePage> {
 }
 
 //连接逍遥模拟器: adb connect 127.0.0.1:21503
-//检查flutter packages pub publish --dry-run
-//发布命令flutter packages pub publish --server=https://pub.dartlang.org
+//检查: flutter packages pub publish --dry-run
+//发布命令: flutter packages pub publish --server=https://pub.dartlang.org
 //报错code65解决: flutter packages pub global activate devtools
