@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:ff_stars/ff_stars.dart';
-
 void main() {
   test('adds one to input values', () {
     // final calculator = FFStars();

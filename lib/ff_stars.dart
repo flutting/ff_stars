@@ -8,8 +8,8 @@ typedef FFStarsChanged = void Function(double realStars, double selectedStars);
 // ignore: must_be_immutable
 class FFStars extends StatefulWidget {
   FFStars({
-    @required this.normalStar,
-    @required this.selectedStar,
+    required this.normalStar,
+    required this.selectedStar,
     this.starCount = 5,
     this.currentStars = 0.0,
     this.step = 0.01,
@@ -21,8 +21,7 @@ class FFStars extends StatefulWidget {
     this.justShow = false,
     this.starsChanged,
     this.needFollowStar = false,
-  }) : assert(normalStar != null),
-        assert(selectedStar != null) {
+  }) {
     /// 限制0.01 <= step <= 1.0
     this.step = min(1.0, this.step);
 
@@ -74,7 +73,7 @@ class FFStars extends StatefulWidget {
   bool justShow;
 
   /// 数值发生变化的回调
-  FFStarsChanged starsChanged;
+  FFStarsChanged? starsChanged;
 
   /// 是否需要实时回调, 若开启, 拖动时会回调多次, 否则仅在用户操作结束后回调.
   bool needFollowStar;
@@ -181,7 +180,7 @@ class _FFStarsState extends State<FFStars> {
       if (widget.starsChanged == null) {
         return;
       }
-      widget.starsChanged(widget.currentStars, selectedStars);
+      widget.starsChanged!(widget.currentStars, selectedStars);
     }
   }
 
@@ -223,7 +222,10 @@ class FFStarsClipper extends CustomClipper<Rect> {
   }
 
   @override
-  bool shouldReclip(covariant FFStarsClipper oldClipper) {
-    return oldClipper.width != this.width;
+  bool shouldReclip(covariant CustomClipper<Rect> oldClipper) {
+    if (oldClipper is FFStarsClipper) {
+      return oldClipper.width != this.width;
+    }
+    return false;
   }
 }

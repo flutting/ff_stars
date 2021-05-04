@@ -27,8 +27,8 @@ import 'package:ff_stars/ff_stars.dart';
 FFStars(
   normalStar: Image.asset("assets/normalImage.png"),
   selectedStar: Image.asset("assets/selectedImage.png"),
-  starsChanged: (realStars, choosedStars) {
-    print("实际选择: $choosedStars, 最终得分: $realStars");
+  starsChanged: (realStars, selectedStars) {
+    print("实际选择: $selectedStars, 最终得分: $realStars");
   },
   step: 0.01,/// 用于设置半星(0.5), 整星(1.0), 任意星(0.01), 可在0.01 - 1.0之间自定义, 默认值为0.01
   currentStars: 4.3,/// 默认有几颗星星, 默认值为0

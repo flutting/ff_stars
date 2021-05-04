@@ -56,55 +56,39 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> demoList() {
-
     return [
-
       /// 第一个
       Text("1. 共计5颗星, 只能选整星, 默认给3颗"),
-      SizedBox(
-        height: afw(5),
-      ),
+      SizedBox(height: afw(5),),
       FFStars(
         normalStar: Image.asset("assets/blueNormal.png"),
         selectedStar: Image.asset("assets/blueSelected.png"),
-        starsChanged: (realStars, choosedStars) {
-          print("实际选择: $choosedStars, 最终得分: $realStars");
+        starsChanged: (realStars, selectedStars) {
+          print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 1.0,
         currentStars: 3,
       ),
 
       /// 第二个
-      SizedBox(
-        height: afw(20),
-      ),
-      Text("2. 共计5颗星, 可以选半星, 默认给3.5颗"),
-      SizedBox(
-        height: 5,
-      ),
+      getTitleWidget("2. 共计5颗星, 可以选半星, 默认给3.5颗"),
       FFStars(
         normalStar: Image.asset("assets/orangeNormal.png"),
         selectedStar: Image.asset("assets/orangeSelected.png"),
-        starsChanged: (realStars, choosedStars) {
-          print("实际选择: $choosedStars, 最终得分: $realStars");
+        starsChanged: (realStars, selectedStars) {
+          print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 0.5,
         currentStars: 3.5,
       ),
 
       /// 第三个
-      SizedBox(
-        height: afw(20),
-      ),
-      Text("3. 共计5颗星, 可选任意星, 默认给4.3颗"),
-      SizedBox(
-        height: afw(5),
-      ),
+      getTitleWidget("3. 共计5颗星, 可选任意星, 默认给4.3颗"),
       FFStars(
         normalStar: Image.asset("assets/christmasNormal.png"),
         selectedStar: Image.asset("assets/christmasSelected.png"),
-        starsChanged: (realStars, choosedStars) {
-          print("实际选择: $choosedStars, 最终得分: $realStars");
+        starsChanged: (realStars, selectedStars) {
+          print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 0.01,
         currentStars: 4.3,
@@ -116,18 +100,12 @@ class _HomePageState extends State<HomePage> {
       ),
 
       /// 第四个
-      SizedBox(
-        height: afw(20),
-      ),
-      Text("4. 共计8颗星, 最低选2颗"),
-      SizedBox(
-        height: afw(5),
-      ),
+      getTitleWidget("4. 共计8颗星, 最低选2颗"),
       FFStars(
         normalStar: Image.asset("assets/blueNormal.png"),
         selectedStar: Image.asset("assets/blueSelected.png"),
-        starsChanged: (realStars, choosedStars) {
-          print("实际选择: $choosedStars, 最终得分: $realStars");
+        starsChanged: (realStars, selectedStars) {
+          print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 1.0,
         currentStars: 6,
@@ -136,13 +114,7 @@ class _HomePageState extends State<HomePage> {
       ),
 
       /// 第五个
-      SizedBox(
-        height: afw(20),
-      ),
-      Text("5. 共计5颗星, 不可修改"),
-      SizedBox(
-        height: afw(5),
-      ),
+      getTitleWidget("5. 共计5颗星, 不可修改"),
       FFStars(
         normalStar: Image.asset("assets/orangeNormal.png"),
         selectedStar: Image.asset("assets/orangeSelected.png"),
@@ -151,18 +123,12 @@ class _HomePageState extends State<HomePage> {
       ),
 
       /// 第六个
-      SizedBox(
-        height: afw(20),
-      ),
-      Text("6. 四舍五入, 变化实时回调(其余为结束回调)"),
-      SizedBox(
-        height: afw(5),
-      ),
+      getTitleWidget("6. 四舍五入, 变化实时回调(其余为结束回调)"),
       FFStars(
         normalStar: Image.asset("assets/christmasNormal.png"),
         selectedStar: Image.asset("assets/christmasSelected.png"),
-        starsChanged: (realStars, choosedStars) {
-          print("实际选择: $choosedStars, 最终得分: $realStars");
+        starsChanged: (realStars, selectedStars) {
+          print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         currentStars: 7,
         starCount: 8,
@@ -177,6 +143,16 @@ class _HomePageState extends State<HomePage> {
   double afw(x) {
     var screenWidth = MediaQuery.of(context).size.width;
     return x / 375.0 * screenWidth;
+  }
+
+  Widget getTitleWidget(String title) {
+    return Column(
+      children: <Widget>[
+        SizedBox(height: afw(20),),
+        Text(title),
+        SizedBox(height: afw(5),),
+      ],
+    );
   }
 
 }
