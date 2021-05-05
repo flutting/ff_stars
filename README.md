@@ -16,7 +16,8 @@
 ```
 // 集成
 dependencies:
-  ff_stars: ^0.1.6
+  ff_stars: ^0.2.0 // 支持空安全(持续维护)
+  ff_stars: ^0.1.6 // 非空安全(后续不再维护)
 
 // 引入
 import 'package:ff_stars/ff_stars.dart';
