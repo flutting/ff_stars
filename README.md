@@ -9,14 +9,14 @@
 ## Show results
 1. Some network environments may not be able to view the renderings.
 2. Git picture is slower, download Demo directly.
-3. If you encounter "Could not build the application for the simulator", please use "flutter clean"
-<img src="https://github.com/flutting/ff_source/blob/main/ff_stars/ff_stars.gif" width="343" height="617">
+3. If you encounter "Could not build the application for the simulator", please use "flutter clean".
+   <img src="https://github.com/flutting/ff_source/blob/main/ff_stars/ff_stars.gif" width="343" height="617">
 
 ### pub
 ```
 // integrated
 dependencies:
-  ff_stars: ^0.3.5 // Support null safety (continuous maintenance)
+  ff_stars: ^1.0.0 // Support null safety (continuous maintenance)
   ff_stars: ^0.1.6 // Do not support null safety (follow-up no longer maintenance)
 
 // Introduce
