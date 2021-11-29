@@ -16,7 +16,7 @@
 ```
 // 集成
 dependencies:
-  ff_stars: ^0.2.0 // 支持空安全(持续维护)
+  ff_stars: ^0.2.5 // 支持空安全(持续维护)
   ff_stars: ^0.1.6 // 非空安全(后续不再维护)
 
 // 引入
@@ -39,7 +39,7 @@ FFStars(
   // starMargin: 20,/// 星星间的间距, 默认10
   // justShow: true,/// 是否仅做展示, 默认false
   // rounded: true,/// 四舍五入-取最近值, 默认false(进一法)
-  // needFollowStar: true,/// 变化实时回调(变更后立即返回当前结果), 默认flase(松手后返回最终结果)
+  // followChange: true,/// 变化实时回调(变更后立即返回当前结果), 默认flase(松手后返回最终结果)
 ),
 ```
 

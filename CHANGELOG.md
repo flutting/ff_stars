@@ -1,4 +1,4 @@
-## [0.2.0] - TODO: Add release date.
+## [0.2.5] - TODO: Add release date.
 
-* TODO: Optimize demo, support air safety.
-* TODO: 优化demo, 支持空安全.
+* TODO: Specification naming, Optimize demo.
+* TODO: 规范命名, 优化demo.

@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 1.0,
-        currentStars: 3,
+        defaultStars: 3,
       ),
 
       /// 第二个
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 0.5,
-        currentStars: 3.5,
+        defaultStars: 3.5,
       ),
 
       /// 第三个
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 0.01,
-        currentStars: 4.3,
+        defaultStars: 4.3,
         // starCount: 5,
         // starHeight: 40,
         // starWidth: 40,
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 1.0,
-        currentStars: 6,
+        defaultStars: 6,
         starCount: 8,
         miniStars: 2,
       ),
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
       FFStars(
         normalStar: Image.asset("assets/orangeNormal.png"),
         selectedStar: Image.asset("assets/orangeSelected.png"),
-        currentStars: 4.7,
+        defaultStars: 4.7,
         justShow: true,
       ),
 
@@ -130,11 +130,11 @@ class _HomePageState extends State<HomePage> {
         starsChanged: (realStars, selectedStars) {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
-        currentStars: 7,
+        defaultStars: 7,
         starCount: 8,
         step: 1,
         rounded: true,/// 四舍五入-取最近值
-        needFollowStar: true,
+        followChange: true,
       ),
     ];
 
