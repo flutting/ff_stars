@@ -7,19 +7,44 @@ typedef FFStarsChanged = void Function(double realStars, double selectedStars);
 
 class FFStars extends StatefulWidget {
   FFStars({
-    required this.normalStar,   /// 未选中(默认)的星星.
-    required this.selectedStar, /// 选中(高亮)的星星.
-    this.starCount = 5,         /// 星星数量.
-    this.defaultStars = 0.0,    /// 默认需要显示的星星数量(支持小数).
-    this.step = 0.01,           /// 分阶, 范围0.01-1.0, 0.01表示任意星, 1.0表示整星星, 0.5表示半星, 范围内自定义.
-    this.rounded = false,       /// 四舍五入, 选择取值方式, 详见下方解释.
-    this.starWidth = 30.0,      /// 星星的宽度.
-    this.starHeight = 30.0,     /// 星星的高度.
-    this.starMargin = 10.0,     /// 两个星星中间的间距.
-    this.miniStars = 0.0,       /// 最低分, 字面意思.
-    this.justShow = false,      /// 仅做展示,  如果是true则用户不可修改星星内容.
-    this.starsChanged,          /// 数值发生变化的回调.
-    this.followChange = false,  /// 是否需要实时回调, 若开启, 拖动时会回调多次, 否则仅在用户操作结束后回调.
+    /// 未选中(默认)的星星.
+    required this.normalStar,
+
+    /// 选中(高亮)的星星.
+    required this.selectedStar,
+
+    /// 星星数量.
+    this.starCount = 5,
+
+    /// 默认需要显示的星星数量(支持小数).
+    this.defaultStars = 0.0,
+
+    /// 分阶, 范围0.01-1.0, 0.01表示任意星, 1.0表示整星星, 0.5表示半星, 范围内自定义.
+    this.step = 0.01,
+
+    /// 四舍五入, 选择取值方式, 详见下方解释.
+    this.rounded = false,
+
+    /// 星星的宽度.
+    this.starWidth = 30.0,
+
+    /// 星星的高度.
+    this.starHeight = 30.0,
+
+    /// 两个星星中间的间距.
+    this.starMargin = 10.0,
+
+    /// 最低分, 字面意思.
+    this.miniStars = 0.0,
+
+    /// 仅做展示, 如果是true则用户不可修改星星内容.
+    this.justShow = false,
+
+    /// 数值发生变化的回调.
+    this.starsChanged,
+
+    /// 是否需要实时回调, 若开启, 拖动时会回调多次, 否则仅在用户操作结束后回调.
+    this.followChange = false,
   });
 
   final Widget normalStar;
@@ -45,7 +70,6 @@ class FFStars extends StatefulWidget {
 }
 
 class _FFStarsState extends State<FFStars> {
-
   late double _miniStars;
 
   late double _currentStars;
@@ -78,15 +102,21 @@ class _FFStarsState extends State<FFStars> {
       children: [
         Listener(
           onPointerDown: (event) {
-            if (widget.justShow) { return; }
+            if (widget.justShow) {
+              return;
+            }
             this.calculateSelectedStars(event.localPosition.dx, false);
           },
-          onPointerMove: (event){
-            if (widget.justShow) { return; }
+          onPointerMove: (event) {
+            if (widget.justShow) {
+              return;
+            }
             this.calculateSelectedStars(event.localPosition.dx, false);
           },
-          onPointerUp: (event){
-            if (widget.justShow) { return; }
+          onPointerUp: (event) {
+            if (widget.justShow) {
+              return;
+            }
             this.calculateSelectedStars(event.localPosition.dx, true);
           },
           child: Row(
@@ -113,7 +143,9 @@ class _FFStarsState extends State<FFStars> {
     var starIndex = (width / (widget.starWidth + widget.starMargin)).floor();
 
     /// 2.获取点击位置在星星的具体x坐标
-    var locationX = min(width - starIndex * (widget.starWidth + widget.starMargin), widget.starWidth);
+    var locationX = min(
+        width - starIndex * (widget.starWidth + widget.starMargin),
+        widget.starWidth);
 
     /// 3.计算具体选中的分值.
     var selectedStars = starIndex + locationX / widget.starWidth;
@@ -125,7 +157,8 @@ class _FFStarsState extends State<FFStars> {
   }
 
   /// 设置最终的实际得分
-  void setupRealStars(double selectedStars, bool useStep, bool reload, bool needCallback) {
+  void setupRealStars(
+      double selectedStars, bool useStep, bool reload, bool needCallback) {
     /// 1.最高分为星星个数, 最低分为自定义最低分(默认0);
     var realStars = min(widget.starCount, selectedStars);
     realStars = max(_miniStars, realStars);
@@ -137,9 +170,11 @@ class _FFStarsState extends State<FFStars> {
       int floor = (decimalNumber / _step).floor();
       double remainder = decimalNumber % _step;
 
-      if (widget.rounded == true) {/// 取最近值
+      if (widget.rounded == true) {
+        /// 取最近值
         realStars = i + floor * _step + ((remainder > _step * 0.5) ? _step : 0);
-      } else {/// 进一法
+      } else {
+        /// 进一法
         realStars = i + floor * _step + ((remainder > 0.0) ? _step : 0);
       }
     }
@@ -162,7 +197,8 @@ class _FFStarsState extends State<FFStars> {
 
   double getRealWidth() {
     var i = _currentStars.floor();
-    var width = (widget.starWidth + widget.starMargin) * i + (_currentStars - i) * widget.starWidth;
+    var width = (widget.starWidth + widget.starMargin) * i +
+        (_currentStars - i) * widget.starWidth;
     return width;
   }
 

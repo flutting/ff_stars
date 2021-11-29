@@ -5,9 +5,11 @@ import 'package:ff_stars/ff_stars.dart';
 
 void main() {
   runApp(MyApp());
+
   /// 安卓状态栏优化
   if (Platform.isAndroid) {
-    SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemUiOverlayStyle systemUiOverlayStyle =
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
@@ -37,7 +39,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,9 @@ class _HomePageState extends State<HomePage> {
     return [
       /// 第一个
       Text("1. 共计5颗星, 只能选整星, 默认给3颗"),
-      SizedBox(height: afw(5),),
+      SizedBox(
+        height: afw(5),
+      ),
       FFStars(
         normalStar: Image.asset("assets/blueNormal.png"),
         selectedStar: Image.asset("assets/blueSelected.png"),
@@ -133,11 +136,12 @@ class _HomePageState extends State<HomePage> {
         defaultStars: 7,
         starCount: 8,
         step: 1,
-        rounded: true,/// 四舍五入-取最近值
+        rounded: true,
+
+        /// 四舍五入-取最近值
         followChange: true,
       ),
     ];
-
   }
 
   double afw(x) {
@@ -148,16 +152,19 @@ class _HomePageState extends State<HomePage> {
   Widget getTitleWidget(String title) {
     return Column(
       children: <Widget>[
-        SizedBox(height: afw(20),),
+        SizedBox(
+          height: afw(20),
+        ),
         Text(title),
-        SizedBox(height: afw(5),),
+        SizedBox(
+          height: afw(5),
+        ),
       ],
     );
   }
-
 }
 
 //连接逍遥模拟器: adb connect 127.0.0.1:21503
 //检查: flutter packages pub publish --dry-run
-//发布命令: flutter packages pub publish --server=https://pub.dartlang.org
+//发布命令: flutter packages pub publish --server=https://pub.dartlang.org // sudo flutter packages pub publish -v
 //报错code65解决: flutter packages pub global activate devtools

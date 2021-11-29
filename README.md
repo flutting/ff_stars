@@ -1,49 +1,49 @@
-# ffstars
+# ff_stars
 
-## 功能简介
-1. 支持整星, 半星 任意星.
-2. 支持点击&拖动调整, 可设置最低分.
-3. 支持自定义星星图片, 大小, 间距, 数量.
-4. 支持选择使用"进一法(默认)"或"四舍五入法(取最近值)"取最终值.
+## Function Introduction
+1. Support the full star, half-star arbitrary star.
+2. Support Click & Drag and adjust to set the minimum points.
+3. Support custom stars pictures, size, spacing, quantity.
+4. Support choice uses "Enter Act (default)" or "Since the Four Raidth (Recent Value)" to take the final value.
 
-## 效果展示
-1. 部分网络环境可能无法查看效果图.
-2. git图片加载较慢, 可下载demo直接运行.
-3. 如遇到Could not build the application for the simulator.请先使用flutter clean清空缓存.
+## Show results
+1. Some network environments may not be able to view the renderings.
+2. Git picture is slower, download Demo directly.
+3. If you encounter "Could not build the application for the simulator", please use "flutter clean"
 <img src="https://github.com/flutting/ff_source/blob/main/ff_stars/ff_stars.gif" width="343" height="617">
 
 ### pub
 ```
-// 集成
+// integrated
 dependencies:
-  ff_stars: ^0.2.5 // 支持空安全(持续维护)
-  ff_stars: ^0.1.6 // 非空安全(后续不再维护)
+  ff_stars: ^0.3.0 // Support null safety (continuous maintenance)
+  ff_stars: ^0.1.6 // Do not support null safety (follow-up no longer maintenance)
 
-// 引入
+// Introduce
 import 'package:ff_stars/ff_stars.dart';
 ```
 
-## 使用方法
+## Instructions
 ```
 FFStars(
   normalStar: Image.asset("assets/normalImage.png"),
   selectedStar: Image.asset("assets/selectedImage.png"),
   starsChanged: (realStars, selectedStars) {
-    print("实际选择: $selectedStars, 最终得分: $realStars");
+    print("real: $selectedStars, final: $realStars");
   },
-  step: 0.01,/// 用于设置半星(0.5), 整星(1.0), 任意星(0.01), 可在0.01 - 1.0之间自定义, 默认值为0.01
-  currentStars: 4.3,/// 默认有几颗星星, 默认值为0
-  // starCount: 5,/// 一共有几颗星, 默认值5
-  // starHeight: 40,/// 星星的高度, 默认30
-  // starWidth: 40,/// 星星的宽度,默认30
-  // starMargin: 20,/// 星星间的间距, 默认10
-  // justShow: true,/// 是否仅做展示, 默认false
-  // rounded: true,/// 四舍五入-取最近值, 默认false(进一法)
-  // followChange: true,/// 变化实时回调(变更后立即返回当前结果), 默认flase(松手后返回最终结果)
+  step: 0.01,
+  defaultStars: 4.3,
+  // starCount: 5,
+  // starHeight: 40,
+  // starWidth: 40,
+  // starMargin: 20,
+  // justShow: true,
+  // rounded: true,
+  // followChange: true,
 ),
 ```
 
-## 主页-GitHub
+## GitHub
 ```
 https://github.com/flutting/ff_stars
 ```
