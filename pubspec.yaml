@@ -1,6 +1,6 @@
 name: ff_stars
-description: Star Evaluation Components - Supporting the Complete, Half Star. Support Click & Drag Adjustment, which can set the lowest points. Support custom stars pictures, size, spacing, quantity.
-version: 0.3.0
+description: Star Evaluation Components. Powerful and easy to use.
+version: 0.3.5
 # author: Lucian-1156868877@qq.com
 homepage: https://github.com/flutting/ff_stars
 repository: https://github.com/flutting/ff_stars

@@ -7,57 +7,55 @@ typedef FFStarsChanged = void Function(double realStars, double selectedStars);
 
 class FFStars extends StatefulWidget {
   FFStars({
-    /// 未选中(默认)的星星.
     required this.normalStar,
-
-    /// 选中(高亮)的星星.
     required this.selectedStar,
-
-    /// 星星数量.
     this.starCount = 5,
-
-    /// 默认需要显示的星星数量(支持小数).
     this.defaultStars = 0.0,
-
-    /// 分阶, 范围0.01-1.0, 0.01表示任意星, 1.0表示整星星, 0.5表示半星, 范围内自定义.
     this.step = 0.01,
-
-    /// 四舍五入, 选择取值方式, 详见下方解释.
     this.rounded = false,
-
-    /// 星星的宽度.
     this.starWidth = 30.0,
-
-    /// 星星的高度.
     this.starHeight = 30.0,
-
-    /// 两个星星中间的间距.
     this.starMargin = 10.0,
-
-    /// 最低分, 字面意思.
     this.miniStars = 0.0,
-
-    /// 仅做展示, 如果是true则用户不可修改星星内容.
     this.justShow = false,
-
-    /// 数值发生变化的回调.
     this.starsChanged,
-
-    /// 是否需要实时回调, 若开启, 拖动时会回调多次, 否则仅在用户操作结束后回调.
     this.followChange = false,
   });
 
+  /// 未选中(默认)的星星.
   final Widget normalStar;
+
+  /// 选中(高亮)的星星.
   final Widget selectedStar;
+
+  /// 星星数量.
   final int starCount;
+
+  /// 默认需要显示的星星数量(支持小数).
   final double defaultStars;
+
+  /// 分阶, 范围0.01-1.0, 0.01表示任意星, 1.0表示整星星, 0.5表示半星, 范围内自定义.
   final double step;
+
+  /// 星星的宽度.
   final double starWidth;
+
+  /// 星星的高度.
   final double starHeight;
+
+  /// 两个星星中间的间距.
   final double starMargin;
+
+  /// 最低分, 字面意思.
   final double miniStars;
+
+  /// 仅做展示, 如果是true则用户不可修改星星内容.
   final bool justShow;
+
+  /// 数值发生变化的回调.
   final FFStarsChanged? starsChanged;
+
+  /// 是否需要实时回调, 若开启, 拖动时会回调多次, 否则仅在用户操作结束后回调.
   final bool followChange;
 
   /// 四舍五入
