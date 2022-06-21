@@ -16,7 +16,7 @@
 ```
 // integrated
 dependencies:
-  ff_stars: ^1.0.0 // Support null safety (continuous maintenance)
+  ff_stars: ^1.2.0 // Support null safety (continuous maintenance)
   ff_stars: ^0.1.6 // Do not support null safety (follow-up no longer maintenance)
 
 // Introduce
