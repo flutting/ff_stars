@@ -170,7 +170,7 @@ class _FFStarsState extends State<FFStars> {
 
       if (widget.rounded == true) {
         /// 取最近值
-        realStars = i + floor * _step + ((remainder > _step * 0.5) ? _step : 0);
+        realStars = i + floor * _step + ((remainder >= _step * 0.5) ? _step : 0);
       } else {
         /// 进一法
         realStars = i + floor * _step + ((remainder > 0.0) ? _step : 0);
