@@ -9,7 +9,7 @@ void main() {
   /// 安卓状态栏优化
   if (Platform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle =
-    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
@@ -145,6 +145,7 @@ class _HomePageState extends State<HomePage> {
 
   double afw(x) {
     var screenWidth = MediaQuery.of(context).size.width;
+
     /// 此处用意为: 只缩放移动端(一般手机尺寸不会大于500)
     return screenWidth < 500 ? x / 375.0 * screenWidth : x * 1.0;
   }
