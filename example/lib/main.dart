@@ -18,13 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '星星评价',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        platform: TargetPlatform.iOS, //页面跳转统一使用iOS风格
-        splashColor: Colors.transparent, //点击时的高亮效果为透明(去除)
+        platform: TargetPlatform.iOS,
+        //页面跳转统一使用iOS风格
+        splashColor: Colors.transparent,
+        //点击时的高亮效果为透明(去除)
         highlightColor: Colors.transparent, //长按时的高亮效果为透明(去除)
       ),
       home: HomePage(),
@@ -38,6 +40,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = FFStarsController(score: 6);
+
+  @override
+  void initState() {
+    Future.delayed(Duration(milliseconds: 3000)).then((value) {
+      controller.score = 3;
+      print('更新评分: 6 -> 3');
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +82,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 1.0,
-        defaultStars: 3,
+        controller: FFStarsController(score: 3),
       ),
 
       /// 第二个
@@ -81,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 0.5,
-        defaultStars: 3.5,
+        controller: FFStarsController(score: 3.5),
       ),
 
       /// 第三个
@@ -93,7 +106,7 @@ class _HomePageState extends State<HomePage> {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
         step: 0.01,
-        defaultStars: 4.3,
+        controller: FFStarsController(score: 4.3),
         // starCount: 5,
         // starHeight: 40,
         // starWidth: 40,
@@ -102,15 +115,15 @@ class _HomePageState extends State<HomePage> {
       ),
 
       /// 第四个
-      getTitleWidget("4. 共计8颗星, 最低选2颗"),
+      getTitleWidget("4. 共计8颗星, 最低选2颗, 6 -> 3"),
       FFStars(
         normalStar: Image.asset("assets/blueNormal.png"),
         selectedStar: Image.asset("assets/blueSelected.png"),
         starsChanged: (realStars, selectedStars) {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
+        controller: controller,
         step: 1.0,
-        defaultStars: 6,
         starCount: 8,
         miniStars: 2,
       ),
@@ -120,7 +133,7 @@ class _HomePageState extends State<HomePage> {
       FFStars(
         normalStar: Image.asset("assets/orangeNormal.png"),
         selectedStar: Image.asset("assets/orangeSelected.png"),
-        defaultStars: 4.7,
+        controller: FFStarsController(score: 4.7),
         justShow: true,
       ),
 
@@ -132,7 +145,7 @@ class _HomePageState extends State<HomePage> {
         starsChanged: (realStars, selectedStars) {
           print("实际选择: $selectedStars, 最终得分: $realStars");
         },
-        defaultStars: 7,
+        controller: FFStarsController(score: 7),
         starCount: 8,
         step: 1,
         rounded: true,
