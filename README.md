@@ -16,7 +16,7 @@
 ```
 // integrated
 dependencies:
-  ff_stars: ^1.3.0 // Support null safety (continuous maintenance)
+  ff_stars: ^1.5.0 // Support null safety (continuous maintenance)
   ff_stars: ^0.1.6 // Do not support null safety (follow-up no longer maintenance)
 
 // Introduce
@@ -32,7 +32,7 @@ FFStars(
     print("real: $selectedStars, final: $realStars");
   },
   step: 0.01,
-  defaultStars: 4.3,
+  controller: FFStarsController(score: 3),
   // starCount: 5,
   // starHeight: 40,
   // starWidth: 40,
