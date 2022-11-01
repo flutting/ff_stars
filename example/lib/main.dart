@@ -40,13 +40,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = FFStarsController(score: 6);
+  double defaultStars = 6;
 
   @override
   void initState() {
     Future.delayed(Duration(milliseconds: 3000)).then((value) {
-      controller.score = 3;
-      print('更新评分: 6 -> 3');
+      print('更新组件4评分: 6 -> 3');
+      setState(() {
+        defaultStars = 3;
+      });
     });
     super.initState();
   }
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("星星评价"),
+        title: Text('星星评价'),
       ),
       body: Center(
         child: Column(
@@ -70,43 +72,47 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> demoList() {
     return [
+      /// 标题
+      Text('前5个采用进一法, 碰到即选中, \n可拖动选中/取消选中!', style: TextStyle(fontSize: 20),),
+      SizedBox(height: afw(15),),
+
       /// 第一个
-      Text("1. 共计5颗星, 只能选整星, 默认给3颗"),
+      Text('1. 共计5颗星, 只能选整星, 默认给3颗'),
       SizedBox(
         height: afw(5),
       ),
       FFStars(
-        normalStar: Image.asset("assets/blueNormal.png"),
-        selectedStar: Image.asset("assets/blueSelected.png"),
+        normalStar: Image.asset('assets/blueNormal.png'),
+        selectedStar: Image.asset('assets/blueSelected.png'),
         starsChanged: (realStars, selectedStars) {
-          print("实际选择: $selectedStars, 最终得分: $realStars");
+          print('实际选择: $selectedStars, 最终得分: $realStars');
         },
         step: 1.0,
-        controller: FFStarsController(score: 3),
+        defaultStars: 3,
       ),
 
       /// 第二个
-      getTitleWidget("2. 共计5颗星, 可以选半星, 默认给3.5颗"),
+      getTitleWidget('2. 共计5颗星, 可以选半星, 默认给3.5颗'),
       FFStars(
-        normalStar: Image.asset("assets/orangeNormal.png"),
-        selectedStar: Image.asset("assets/orangeSelected.png"),
+        normalStar: Image.asset('assets/orangeNormal.png'),
+        selectedStar: Image.asset('assets/orangeSelected.png'),
         starsChanged: (realStars, selectedStars) {
-          print("实际选择: $selectedStars, 最终得分: $realStars");
+          print('实际选择: $selectedStars, 最终得分: $realStars');
         },
         step: 0.5,
-        controller: FFStarsController(score: 3.5),
+        defaultStars: 3.5,
       ),
 
       /// 第三个
-      getTitleWidget("3. 共计5颗星, 可选任意星, 默认给4.3颗"),
+      getTitleWidget('3. 共计5颗星, 可选任意星, 默认给4.3颗'),
       FFStars(
-        normalStar: Image.asset("assets/christmasNormal.png"),
-        selectedStar: Image.asset("assets/christmasSelected.png"),
+        normalStar: Image.asset('assets/christmasNormal.png'),
+        selectedStar: Image.asset('assets/christmasSelected.png'),
         starsChanged: (realStars, selectedStars) {
-          print("实际选择: $selectedStars, 最终得分: $realStars");
+          print('实际选择: $selectedStars, 最终得分: $realStars');
         },
         step: 0.01,
-        controller: FFStarsController(score: 4.3),
+        defaultStars: 4.3,
         // starCount: 5,
         // starHeight: 40,
         // starWidth: 40,
@@ -115,37 +121,37 @@ class _HomePageState extends State<HomePage> {
       ),
 
       /// 第四个
-      getTitleWidget("4. 共计8颗星, 最低选2颗, 6 -> 3"),
+      getTitleWidget('4. 共计8颗星, 最低选2颗, 更新: 6颗 -> 3颗'),
       FFStars(
-        normalStar: Image.asset("assets/blueNormal.png"),
-        selectedStar: Image.asset("assets/blueSelected.png"),
+        normalStar: Image.asset('assets/blueNormal.png'),
+        selectedStar: Image.asset('assets/blueSelected.png'),
         starsChanged: (realStars, selectedStars) {
-          print("实际选择: $selectedStars, 最终得分: $realStars");
+          print('实际选择: $selectedStars, 最终得分: $realStars');
         },
-        controller: controller,
         step: 1.0,
+        defaultStars: defaultStars,
         starCount: 8,
         miniStars: 2,
       ),
 
       /// 第五个
-      getTitleWidget("5. 共计5颗星, 不可修改"),
+      getTitleWidget('5. 共计5颗星, 不可修改, 默认给3.7颗'),
       FFStars(
-        normalStar: Image.asset("assets/orangeNormal.png"),
-        selectedStar: Image.asset("assets/orangeSelected.png"),
-        controller: FFStarsController(score: 4.7),
+        normalStar: Image.asset('assets/orangeNormal.png'),
+        selectedStar: Image.asset('assets/orangeSelected.png'),
+        defaultStars: 3.7,
         justShow: true,
       ),
 
       /// 第六个
-      getTitleWidget("6. 四舍五入, 变化实时回调(其余为结束回调)"),
+      getTitleWidget('6. 四舍五入(取近似值), 变化实时回调'),
       FFStars(
-        normalStar: Image.asset("assets/christmasNormal.png"),
-        selectedStar: Image.asset("assets/christmasSelected.png"),
+        normalStar: Image.asset('assets/christmasNormal.png'),
+        selectedStar: Image.asset('assets/christmasSelected.png'),
         starsChanged: (realStars, selectedStars) {
-          print("实际选择: $selectedStars, 最终得分: $realStars");
+          print('实际选择: $selectedStars, 最终得分: $realStars');
         },
-        controller: FFStarsController(score: 7),
+        defaultStars: 7,
         starCount: 8,
         step: 1,
         rounded: true,
@@ -153,6 +159,8 @@ class _HomePageState extends State<HomePage> {
         /// 四舍五入-取最近值
         followChange: true,
       ),
+
+      SizedBox(height: afw(15),),
     ];
   }
 
@@ -165,6 +173,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget getTitleWidget(String title) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(
           height: afw(20),

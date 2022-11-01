@@ -9,8 +9,8 @@ class FFStars extends StatefulWidget {
   FFStars({
     required this.normalStar,
     required this.selectedStar,
-    this.controller,
     this.starCount = 5,
+    this.defaultStars = 0.0,
     this.step = 0.01,
     this.rounded = false,
     this.starWidth = 30.0,
@@ -31,8 +31,8 @@ class FFStars extends StatefulWidget {
   /// 星星数量.
   final int starCount;
 
-  /// 控制(默认评分和修改评分)
-  final FFStarsController? controller;
+  /// 默认需要显示的星星数量(支持小数).
+  final double defaultStars;
 
   /// 分阶, 范围0.01-1.0, 0.01表示任意星, 1.0表示整星星, 0.5表示半星, 范围内自定义.
   final double step;
@@ -70,7 +70,7 @@ class FFStars extends StatefulWidget {
 class _FFStarsState extends State<FFStars> {
   late double _miniStars;
 
-  double _currentStars = 0.0;
+  late double _currentStars;
 
   late double _step;
 
@@ -85,17 +85,19 @@ class _FFStarsState extends State<FFStars> {
     /// 限制最低星不高于最高星
     _miniStars = min(widget.miniStars, widget.starCount * 1.0);
 
-    if (widget.controller != null) {
-      widget.controller!._state = this;
+    /// 限制当前星不高于最高星
+    _currentStars = min(widget.defaultStars, widget.starCount * 1.0);
 
-      /// 限制当前星不高于最高星
-      _currentStars = min(widget.controller!.score, widget.starCount * 1.0);
-
-      /// 限制当前星不低于最低星
-      _currentStars = max(widget.controller!.score, widget.miniStars);
-    }
+    /// 限制当前星不低于最低星
+    _currentStars = max(widget.defaultStars, widget.miniStars);
 
     this.setupRealStars(_currentStars, false, false, false);
+  }
+
+  @override
+  void didUpdateWidget(FFStars oldWidget) {
+    setupRealStars(widget.defaultStars, false, false, false);
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -198,13 +200,6 @@ class _FFStarsState extends State<FFStars> {
     }
   }
 
-  /// 提供给外部(controller)的更新方法
-  void update(double value) {
-    setState(() {
-      setupRealStars(value, false, false, false);
-    });
-  }
-
   /// 获取实际宽度
   double getRealWidth() {
     var i = _currentStars.floor();
@@ -250,25 +245,5 @@ class FFStarsClipper extends CustomClipper<Rect> {
       return oldClipper.width != this.width;
     }
     return false;
-  }
-}
-
-/// 外部更新评分
-class FFStarsController {
-  double _score = 0.0;
-
-  double get score => _score;
-
-  set score(double value) {
-    _score = value;
-    if (_state != null) {
-      _state!.update(value);
-    }
-  }
-
-  _FFStarsState? _state;
-
-  FFStarsController({double score = 0.0}) {
-    this._score = score;
   }
 }
