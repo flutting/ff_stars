@@ -188,11 +188,9 @@ class _FFStarsState extends State<FFStars> {
     /// 3.更新星星展示效果并回调
     if (reload == true) {
       setState(() {});
-
       if (needCallback == false && widget.followChange == false) {
         return;
       }
-
       if (widget.starsChanged == null) {
         return;
       }
